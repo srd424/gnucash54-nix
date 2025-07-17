@@ -29,17 +29,6 @@
 
     packages.x86_64-linux.default = self.packages.x86_64-linux.gnucash;
     packages.x86_64-linux.pymodule = pkgs.python3Packages.toPythonModule self.packages.x86_64-linux.gnucash;
-    packages.x86_64-linux.import = pkgs.python3Packages.buildPythonApplication rec {
-      pname = "gnucash-qif-import";
-      version = "0.1";
-      src = /home/steved/pkgs/gnucash-qif-import/gnucash-qif-import3;
-      format = "other";
-      propagatedBuildInputs = [ self.outputs.packages.x86_64-linux.pymodule ];
-      installPhase = ''
-        mkdir -p $out/bin
-        cp qif.py import.py $out/bin
-      '';
-    };
 
   };
 }
